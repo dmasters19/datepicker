@@ -5,24 +5,28 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="js/angular_1.6.4.js"></script>
-    <script src="js/ui-bootstrap-tpls-2.5.0.js"></script>
+    <script src="js/datepicker.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body ng-app="app" ng-cloak>
 <div ng-controller="MainCtrl">
 
-  {{msg}}
-
   <div class="col-xs-4 col-md-3">
     <p class="input-group dp-btn">
-            <input type="text" class="form-control ui-datepicker" uib-datepicker-popup="{{format}}" ng-model="start_dt.value" is-open="opendt['start_dt']" datepicker-options="options" ng-required="true" close-text="Close" alt-input-formats="altInputFormats">
+            <input type="text" class="form-control" uib-datepicker-popup ng-model="start_dt.value" is-open="opendt['start_dt']">
             <span class="input-group-btn">
               <button type="button" class="btn btn-default" ng-click="open('start_dt')"><i class="fa fa-calendar"></i></button>
             </span>
            </p>
        </div>
-
-
+<br>
+<br>
+<br>
+<br>
+<p>
+       {{start_dt.value}}
+</p>
 </div>
+
 </body>
 </html>
