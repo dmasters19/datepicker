@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<div>
+  <div class="col text datepicker theme-standard pin-left departing datepicker-open">
+    <label class="datepicker-label datepicker-arrow text icon-before focused" for="package-departing">
+      <span class="label">Start</span>
+      <input id="package-departing" class="datepicker-trigger-input" type="text" placeholder="mm/dd/yyy">
+      <span class="icon icon-calendar"></span>
+    </label>
+    <div class="datepicker-dropdown">
+      <div class="datepicker-cal">
+        <div class="datepicker-close">
+          <button type="button" class="datepicker-close-btn close btn-text">
+            <span class="btn-label">
+              <span aria-hidden="true">Close </span>
+              <span class="visuallyhidden">Close the Date Picker or proceed to select a date</span>
+              <span class="fa fa-times" aria-hidden="true"></span>
+            </span>
+          </button>
+        </div>
+        <button type="button" class="datepicker-paging datepicker-prev btn-paging btn-secondary prev first-month">
+          <span class="btn-label">
+            <span class="icon icon-pageprev" aria-hidden="true"></span>
+            <span class="visuallyhidden">previous month</span>
+          </span>
+        </button>
+        <button type="button" class="datepicker-paging datepicker-next btn-paging btn-secondary next">
+          <span class="btn-label">
+            <span class="icon icon-pagenext" aria-hidden="true"></span>
+            <span class="visuallyhidden">next month</span>
+          </span>
+        </button>
+
+      <div class="datepicker-cal-month">
+        <table class="datepicker-cal-weeks">
+          <caption class="datepicker-cal-month-header">MAY 2017</caption>
+          <thead class="datepicker-cal-days">
+            <tr>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Sunday</span>
+                <span aria-hidden="true">S</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Monday</span>
+                <span aria-hidden="true">M</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Tuesday</span>
+                <span aria-hidden="true">T</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Wednesday</span>
+                <span aria-hidden="true">W</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Thursday</span>
+                <span aria-hidden="true">T</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Friday</span>
+                <span aria-hidden="true">F</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Saturday</span>
+                <span aria-hidden="true">S</span>
+              </th>
+            </tr>
+          </thead>
+          <tbody class="datepicker-cal-dates">
+            <tr>
+              <td>
+                <span class="visuallyhidden datepicker-day-empty">empty</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">1</button>
+                <span class="visuallyhidden">1, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">2</button>
+                <span class="visuallyhidden">2, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">3</button>
+                <span class="visuallyhidden">3, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">4</button>
+                <span class="visuallyhidden">4, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">5</button>
+                <span class="visuallyhidden">5, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">6</button>
+                <span class="visuallyhidden">6, date disabled</span>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">7</button>
+                <span class="visuallyhidden">7, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">8</button>
+                <span class="visuallyhidden">8, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date disabled" aria-hidden="true" disabled="">9</button>
+                <span class="visuallyhidden">9, date disabled</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="10">10</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="11">11</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="12">12</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="13">13</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="14">14</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="15">15</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="16">16</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="17">17</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="18">18</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="19">19</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="20">20</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="21">21</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="22">22</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="23">23</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="24">24</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="25">25</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="26">26</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="27">27</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="28">28</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="29">29</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="30">30</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="4" data-day="31">31</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="datepicker-cal-month">
+        <table class="datepicker-cal-weeks">
+          <caption class="datepicker-cal-month-header">JUN 2017</caption>
+          <thead class="datepicker-cal-days">
+            <tr>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Sunday</span>
+                <span aria-hidden="true">S</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Monday</span>
+                <span aria-hidden="true">M</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Tuesday</span>
+                <span aria-hidden="true">T</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Wednesday</span>
+                <span aria-hidden="true">W</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Thursday</span>
+                <span aria-hidden="true">T</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Friday</span>
+                <span aria-hidden="true">F</span>
+              </th>
+              <th scope="col" role="columnheader" class="datepicker-day-name">
+                <span class="visuallyhidden">Saturday</span>
+                <span aria-hidden="true">S</span>
+              </th>
+            </tr>
+          </thead>
+          
+          <tbody class="datepicker-cal-dates">
+            <tr>
+              <td>
+                <span class="visuallyhidden datepicker-day-empty">empty</span>
+              </td>
+              <td>
+                <span class="visuallyhidden datepicker-day-empty">empty</span>
+              </td>
+              <td>
+                <span class="visuallyhidden datepicker-day-empty">empty</span>
+              </td>
+              <td>
+                <span class="visuallyhidden datepicker-day-empty">empty</span>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="1">1</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="2">2</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="3">3</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="4">4</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="5">5</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="6">6</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="7">7</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="8">8</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="9">9</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="10">10</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="11">11</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="12">12</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="13">13</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="14">14</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="15">15</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="16">16</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="17">17</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="18">18</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="19">19</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="20">20</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="21">21</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="22">22</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="23">23</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="24">24</button>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="25">25</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="26">26</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="27">27</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="28">28</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="29">29</button>
+              </td>
+              <td class="datepicker-day-number">
+                <button type="button" class="datepicker-cal-date" data-year="2017" data-month="5" data-day="30">30</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

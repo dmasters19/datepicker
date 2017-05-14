@@ -1,0 +1,460 @@
+div {
+  display: block;
+}
+
+.pin-left .datepicker-arrow::after {
+    left: 1.29411765em;
+}
+
+.first-month {
+    display: none;
+}
+
+.datepicker-cal-month+.datepicker-cal-month {
+    display: none;
+}
+
+
+button.datepicker-cal-date:focus, button.datepicker-cal-date:hover{
+  background:#0087f5;color:#fff;text-decoration:none
+}
+
+html {
+  font-family: "Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+  margin: 0;
+  vertical-align: baseline;
+  -webkit-font-smoothing: antialiased;
+}
+
+button.datepicker-cal-date.end, button.datepicker-cal-date.start {
+    background: #004074;
+    color: #fff;
+}
+
+.datepicker-day-name {
+    color: #616161;
+    font-weight: 700;
+    padding: 0;
+    font-size: .76470588em;
+    line-height: 1.4;
+}
+
+label {
+  position: relative;
+  margin-top: .708em;
+  color: black;
+}
+
+.datepicker-cal {
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+}
+
+button.btn-secondary {
+  border-width: 1px 1px 2px;
+  border-radius: .26666667em;
+  vertical-align: bottom;
+  line-height: 1.2;
+}
+
+.datepicker-day-number {
+    padding: 0;
+}
+
+.datepicker-cal-date, button.datepicker-cal-date {
+    background: 0 0;
+    border-radius: 0;
+    color: #004e93;
+    display: block;
+    font-weight: 400;
+    margin: 0;
+    width: 100%;
+    font-size: .76470588em;
+    line-height: 1.4;
+    line-height: 2.46153846;
+}
+
+button {
+    position: relative;
+    -webkit-writing-mode: horizontal-tb;
+    text-rendering: auto;
+    border: 1px solid transparent;
+    vertical-align: baseline;
+    border-width: 1px 1px 2px;
+    font: 11px system-ui;
+    letter-spacing: normal;
+    padding: 0;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    align-items: flex-start;
+    text-align: center;
+    -webkit-appearance: none;
+    font-family: "Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+    display: inline-block;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.datepicker-cal-date:disabled {
+    background: 0 0!important;
+    border-color: transparent!important;
+    color: #cacaca;
+}
+
+button {
+    -webkit-appearance: none;
+    appearance: none;
+    font-family: "Helvetica Neue",Arial,"Lucida Grande",sans-serif;
+}
+
+button[disabled] {
+    border-color: #c7c7c7!important;
+    color: #c7c7c7!important;
+    cursor: not-allowed;
+    opacity: .8;
+    pointer-events: none;
+}
+
+
+.visuallyhidden {
+    position: absolute!important;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    border: 0;
+    overflow: hidden;
+}
+
+.icon {
+    display: inline-block;
+    font-style: normal;
+    position: relative;
+}
+
+.datepicker-next {
+    right: .30555556em;
+}
+
+.btn-label{
+  padding: 0;
+}
+
+.datepicker-paging {
+    position: absolute;
+    top: .27777778em;
+    border: none;
+    color: #004e93;
+    font-size: 2.11764706em;
+}
+
+.btn-paging {
+    background: 0 0;
+}
+
+.datepicker-paging .btn-label {
+  margin: 0px;
+}
+
+button .btn-label {
+  display: inline-block;
+  pointer-events: none;
+}
+
+.datepicker-prev {
+    left: .27777778em;
+}
+
+datepicker-paging {
+    position: absolute;
+    top: .27777778em;
+    border: none;
+    color: #004e93;
+}
+
+.datepicker-close{
+  width: 100%;
+  text-align: right;
+  font-size: .76470588em;
+  line-height: 1.4;
+  border-top: 1px solid #e0e0e0;
+  background: #f5f5f5;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1001;
+}
+
+.btn-paging.btn-secondary {
+    margin: 0;
+    padding: 0;
+    font-size: 2.11764706em;
+}
+
+.datepicker-close-btn{
+  color: #616161;
+  padding: .58823529em .70588235em;
+}
+
+.btn-text{
+  position: static;
+  margin: 0;
+  background: 0 0;
+  border-radius: 0;
+  display: inline;
+  font-weight: 400;
+  text-align: left;
+  border: 0;
+}
+
+.forms .tab-pane .text.datepicker {
+    width: 25%;
+    min-width: 9.05882353em;
+}
+
+
+.datepicker-dropdown{
+  margin-left: .70588235em;
+  /* what does this do? */
+  right: auto;
+  left: -2px;
+  background: #fff;
+  border: 3px solid #004074;
+  box-shadow: 0 0.52941176em 1.58823529em rgba(0,0,0,.12);
+  border-radius: .17647059em;
+  display: block;
+  height: auto;
+  opacity: 1;
+  z-index: 1000;
+  position: absolute;
+  margin-top: .52941176em;
+  min-width: 17.64705882em;
+}
+
+.text.icon-before input, .text.icon-before textarea {
+    padding-left: 1.76470588rem;
+}
+
+.icon-after .icon, .icon-before .icon {
+    position: absolute;
+    display: block;
+    width: 1.76470588em;
+    height: 2.11764706em;
+    margin-top: -2.34705882em;
+    box-shadow: none!important;
+    padding: 0;
+    line-height: 2.11764706em;
+    text-align: center;
+    color: #c7c7c7;
+    cursor: pointer;
+}
+
+::selection {
+    background: #d4d4d4;
+    text-shadow: none;
+}
+
+.icon::before, .icon:after {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    speak: none;
+}
+
+.icon-calendar:after {
+    content: "\f073";
+}
+
+
+.icon-pagenext:after, .icon-pageprev:after {
+    content: "\f138";
+}
+
+.datepicker-open>.datepicker-arrow::after {
+    visibility: visible;
+    clip: auto;
+    width: 1.05882353em;
+    height: 1.05882353em;
+}
+
+.theme-standard .datepicker-arrow::after {
+    background: #fff;
+    border: 3px solid #004074;
+}
+
+.datepicker .datepicker-arrow::after {
+    border-right: 0 solid transparent;
+    border-bottom: 0 solid transparent;
+}
+
+.datepicker-arrow::after {
+    background: #fff;
+    border: 3px solid #004074;
+    position: absolute;
+    z-index: 1001;
+    content: '';
+    display: block;
+    visibility: hidden;
+    width: 1px;
+    height: 1px;
+ /*   margin: -1px;  */
+    clip: rect(0 0 0 0);
+    font-size: 1rem;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-bottom-right-radius: 5em;
+}
+
+label, label span {
+  display: block;
+  white-space: nowrap;
+}
+
+.text input{
+  width: 100%;
+  border-radius: 3px;
+  border: 1px solid;
+  padding: .49rem .72rem;
+  background: white;
+  font-size: .90rem;
+  line-height: 1.2;
+  cursor: text;
+  min-height: 2.7rem;
+}
+
+.label{
+  line-height: 1.4;
+  margin-bottom: 0.35802em;
+}
+
+.col{
+  float: left;
+  padding-left: .7em;
+  position: relative;
+}
+
+.datepicker-cal-weeks {
+    text-align: center;
+    margin-top: .69230769em;
+    width: 100%;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+td, textarea {
+    vertical-align: top;
+}
+
+.datepicker-cal-month-header {
+    font-size: .88235294em;
+    line-height: 1.4;
+    color: #1f1f1f;
+    margin-bottom: 1.6em;
+    font-weight: 700;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+
+
+.text.datepicker label {
+  width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,135,245,0);
+  }
+
+.datepicker-cal-month {
+    text-align: center;
+    padding: .70588235em;
+    min-height: 19.94117647em;
+}
+
+@media only screen and (min-width: 30.75em)
+{
+  .datepicker-dropdown {
+      width: 26.94117647em;
+  }
+}
+
+@media only screen and (min-width: 30.75em)
+{
+  .datepicker-cal-date, button.datepicker-cal-date {
+      line-height: 2.07692308;
+  }
+}
+
+@media only screen and (min-width: 30.75em)
+{
+  .datepicker-cal {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-flow: row nowrap;
+      -ms-flex-flow: row nowrap;
+      flex-flow: row nowrap;
+      -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+  }
+}
+
+
+@media only screen and (min-width: 30.75em)
+{
+  .datepicker-cal-month {
+      -webkit-flex: 1 1 50%;
+      -ms-flex: 1 1 50%;
+      flex: 1 1 50%;
+      border-right: 1px solid #e0e0e0;
+      min-height: 18.05882353em;
+  }
+}
+
+@media only screen and (min-width: 30.75em)
+{
+.datepicker-cal-month+.datepicker-cal-month {
+    display: block;
+}
+}
+
+@media only screen and (min-width: 30.75em)
+{
+.datepicker-cal-month:last-child {
+    border-right: 1px solid transparent;
+}
+}
+
+
+@media only screen and (min-width: 30.75em)
+{
+  .datepicker-prev.first-month, .last-month {
+      display: none;
+  }
+}
+
+@media only screen and (max-width: 30.6875em)
+{
+  .forms .tab-pane .text.datepicker {
+      width: 50%;
+  }
+}
