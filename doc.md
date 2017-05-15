@@ -112,7 +112,52 @@
     "");
   }]);
 
+  Let's descontruct the above further
 
+  The :: indicates a ONE-TIME-BINDING.  An expression that starts with :: is considered a one-time expression. One-time expressions will stop recalculating once they are stable, which happens after the first digest if the expression result is a non-undefined value (see value stabilization algorithm below).  The uniqueId is generated in the UibDatepickerCtrl to synchronize labels
+
+    "<table role=\"grid\" aria-labelledby=\"{{::uniqueId}}-title\" 
+
+    I'm not sure what activeDatID is for yet.  Active descendant Identifies the currently active element when DOM focus is on a composite widget, textbox, group, or application.  I think all atributes prefixed with aria are to make the application more usable to those with disabilities using screen readers
+
+    aria-activedescendant=\"{{activeDateId}}\">\n" +
+
+    This is the month previous button, aria-hidden only applies to screen readers.
+    <span class=sr-only> stands for screen-reader only and is also for the aria initiative
+
+    "      <th><button type=\"button\" class=\"btn btn-default btn-sm pull-left uib-left\" ng-click=\"move(-1)\" tabindex=\"-1\"><i aria-hidden=\"true\" class=\"glyphicon glyphicon-chevron-left\"></i><span class=\"sr-only\">previous</span></button></th>\n"
+
+    
+    This is the title element which will span 5 columns if week numbers are not show and 6 if theyre shown.  {{title}} is the current title (May 2017)
+
+    "      <th colspan=\"{{::5 + showWeeks}}\"><button id=\"{{::uniqueId}}-title\" role=\"heading\" aria-live=\"assertive\" aria-atomic=\"true\" type=\"button\" class=\"btn btn-default btn-sm uib-title\" ng-click=\"toggleMode()\" ng-disabled=\"datepickerMode === maxMode\" tabindex=\"-1\"><strong>{{title}}</strong></button></th>\n" +
+
+    This is the month next button
+
+    "      <th><button type=\"button\" class=\"btn btn-default btn-sm pull-right uib-right\" ng-click=\"move(1)\" tabindex=\"-1\"><i aria-hidden=\"true\" class=\"glyphicon glyphicon-chevron-right\"></i><span class=\"sr-only\">next</span></button></th>\n" +
+
+    Center text if showing weeks
+
+    <th ng-if=\"showWeeks\" class=\"text-center\"></th>\n" +
+
+
+    This is to label the days of the week Sun, Mon, Tues, etc. at the top of the calendar
+
+  
+    "      <th ng-repeat=\"label in ::labels track by $index\" class=\"text-center\"><small aria-label=\"{{::label.full}}\">{{::label.abbr}}</small></th>\n" +
+
+    
+    ng-repeat through weeks (rows)
+
+    <tr class=\"uib-weeks\" ng-repeat=\"row in rows track by $index\" role=\"row\">\n" +
+
+    Show week numbers if applicable
+
+    <td ng-if=\"showWeeks\" class=\"text-center h6\"><em>{{ weekNumbers[$index] }}</em></
+
+
+
+  
 
 
 
