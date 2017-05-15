@@ -2427,6 +2427,9 @@ function($scope, $element, $attrs, $compile, $log, $parse, $window, $document, $
 .directive('uibDatepickerPopupWrap', function() {
   return {
     restrict: 'A',
+    // The transclude option says contents of a transcluded directive have whatever 
+    // scope is outside the directive, rather than whatever scope is on the inside.
+    // Best Practice: only use transclude: true when you want to create a directive that wraps arbitrary content. 
     transclude: true,
     templateUrl: function(element, attrs) {
       return attrs.templateUrl || 'uib/template/datepickerPopup/popup.html';
