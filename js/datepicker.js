@@ -2449,36 +2449,67 @@ angular.module("uib/template/datepicker/datepicker.html", []).run(["$templateCac
 
 angular.module("uib/template/datepicker/day.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/datepicker/day.html",
-    "<table role=\"grid\" aria-labelledby=\"{{::uniqueId}}-title\" aria-activedescendant=\"{{activeDateId}}\">\n" +
-    "  <thead>\n" +
-    "    <tr>\n" +
-    "      <th><button type=\"button\" class=\"btn btn-default btn-sm pull-left uib-left\" ng-click=\"move(-1)\" tabindex=\"-1\"><i aria-hidden=\"true\" class=\"glyphicon glyphicon-chevron-left\"></i><span class=\"sr-only\">previous</span></button></th>\n" +
-    "      <th colspan=\"{{::5 + showWeeks}}\"><button id=\"{{::uniqueId}}-title\" role=\"heading\" aria-live=\"assertive\" aria-atomic=\"true\" type=\"button\" class=\"btn btn-default btn-sm uib-title\" ng-click=\"toggleMode()\" ng-disabled=\"datepickerMode === maxMode\" tabindex=\"-1\"><strong>{{title}}</strong></button></th>\n" +
-    "      <th><button type=\"button\" class=\"btn btn-default btn-sm pull-right uib-right\" ng-click=\"move(1)\" tabindex=\"-1\"><i aria-hidden=\"true\" class=\"glyphicon glyphicon-chevron-right\"></i><span class=\"sr-only\">next</span></button></th>\n" +
-    "    </tr>\n" +
-    "    <tr>\n" +
-    "      <th ng-if=\"showWeeks\" class=\"text-center\"></th>\n" +
-    "      <th ng-repeat=\"label in ::labels track by $index\" class=\"text-center\"><small aria-label=\"{{::label.full}}\">{{::label.abbr}}</small></th>\n" +
-    "    </tr>\n" +
-    "  </thead>\n" +
-    "  <tbody>\n" +
-    "    <tr class=\"uib-weeks\" ng-repeat=\"row in rows track by $index\" role=\"row\">\n" +
-    "      <td ng-if=\"showWeeks\" class=\"text-center h6\"><em>{{ weekNumbers[$index] }}</em></td>\n" +
-    "      <td ng-repeat=\"dt in row\" class=\"uib-day text-center\" role=\"gridcell\"\n" +
-    "        id=\"{{::dt.uid}}\"\n" +
-    "        ng-class=\"::dt.customClass\">\n" +
-    "        <button type=\"button\" class=\"btn btn-default btn-sm\"\n" +
-    "          uib-is-class=\"\n" +
-    "            'btn-info' for selectedDt,\n" +
-    "            'active' for activeDt\n" +
-    "            on dt\"\n" +
-    "          ng-click=\"select(dt.date)\"\n" +
-    "          ng-disabled=\"::dt.disabled\"\n" +
-    "          tabindex=\"-1\"><span ng-class=\"::{'text-muted': dt.secondary, 'text-info': dt.current}\">{{::dt.label}}</span></button>\n" +
-    "      </td>\n" +
-    "    </tr>\n" +
-    "  </tbody>\n" +
-    "</table>\n" +
+    "<div class=\"datepicker-dropdown\">\n" +
+    "  <div class=\"datepicker-cal\">\n" +
+    "    <div class=\"datepicker-close\">\n" +
+    "      <button type=\"button\" class=\"datepicker-close-btn close btn-text\">\n" +
+    "        <span class=\"btn-label\">\n" +
+    "          <span aria-hidden=\"true\">Close </span>\n" +
+    "          <span class=\"visuallyhidden\">Close the Date Picker or proceed to select a date</span>\n" +
+    "          <span class=\"fa fa-times\" aria-hidden=\"true\"></span>\n" +
+    "        </span>\n" +
+    "      </button>\n" +
+    "    </div>\n" +
+    "    <button type=\"button\" class=\"datepicker-paging datepicker-prev btn-paging btn-secondary prev first-month\">\n" +
+    "      <span class=\"btn-label\">\n" +
+    "        <span class=\"icon icon-pageprev\" aria-hidden=\"true\"></span>\n" +
+    "        <span class=\"visuallyhidden\">previous month</span>\n" +
+    "      </span>\n" +
+    "    </button>\n" +
+    "    <button type=\"button\" class=\"datepicker-paging datepicker-next btn-paging btn-secondary next\">\n" +
+    "      <span class=\"btn-label\">\n" +
+    "        <span class=\"icon icon-pagenext\" aria-hidden=\"true\"></span>\n" +
+    "        <span class=\"visuallyhidden\">next month</span>\n" +
+    "      </span>\n" +
+    "    </button>\n" +
+    "    <div class=\"datepicker-cal-month\">\n" +
+    "      <table class=\"datepicker-cal-weeks\">\n" +
+    "        <caption class=\"datepicker-cal-month-header\">{{title}}</caption>\n" +
+    "        <thead class=\"datepicker-cal-days\">\n" +
+    "          <tr>\n" +
+    "            <th ng-repeat=\"label in ::labels track by $index\" scope=\"col\" role=\"columnheader\" class=\"datepicker-day-name\"><span class=\"visuallyhidden\">{{::label.full}}</span><span aria-hidden=\"true\">{{::label.abbr}}</span></th>\n" +
+    "          </tr>\n" +
+    "        </thead\n" +
+    "        <tbody class=\"datepicker-cal-dates\">\n" +
+    "          <tr ng-repeat=\"row in rows track by $index\">\n" +
+    "            <td ng-repeat=\"dt in row\">\n" +
+    "              <button ng-if=\"!(dt.secondary)\" type=\"button\" class=\"datepicker-cal-date\" aria-hidden=\"true\">{{::dt.label}}</button>\n" +
+    "              <span ng-if=\"dt.secondary\" class=\"visuallyhidden\">{{::dt.label}}, date disabled</span>\n" +
+    "            </td>\n" +
+    "          </tr>\n" +
+    "        </tbody>\n" +
+    "      </table>\n" +
+    "    </div>\n" +
+    "    <div class=\"datepicker-calo-month\">\n" +
+    "      <table class=\"datepicker-cal-weeks\">\n" +
+    "        <caption class=\"datepicker-cal-month-header\">{{title}}</caption>\n" +
+    "        <thead class=\"datepicker-cal-days\">\n" +
+    "          <tr>\n" +
+    "            <th ng-repeat=\"label in ::labels track by $index\" scope=\"col\" role=\"columnheader\" class=\"datepicker-day-name\"><span class=\"visuallyhidden\">{{::label.full}}</span><span aria-hidden=\"true\">{{::label.abbr}}</span></th>\n" +
+    "          </tr>\n" +
+    "        </thead\n" +
+    "        <tbody class=\"datepicker-cal-dates\">\n" +
+    "          <tr ng-repeat=\"row in rows track by $index\">\n" +
+    "            <td ng-repeat=\"dt in row\">\n" +
+    "              <button ng-if=\"!(dt.secondary)\" type=\"button\" class=\"datepicker-cal-date\" aria-hidden=\"true\">{{::dt.label}}</button>\n" +
+    "              <span ng-if=\"dt.secondary\" class=\"visuallyhidden\">{{::dt.label}}, date disabled</span>\n" +
+    "            </td>\n" +
+    "          </tr>\n" +
+    "        </tbody>\n" +
+    "      </table>\n" +
+    "    </div>\n" +
+    "  </div>\n" +
+    "</div>\n" +
     "");
 }]);
 
@@ -2544,15 +2575,13 @@ angular.module("uib/template/datepicker/year.html", []).run(["$templateCache", f
 
 angular.module("uib/template/datepickerPopup/popup.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/datepickerPopup/popup.html",
-    "<ul role=\"presentation\" class=\"uib-datepicker-popup dropdown-menu uib-position-measure\" dropdown-nested ng-if=\"isOpen\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
+    "<ul class=\"col text datepicker theme-standard pin-left departing datepicker-open\" ng-if=\"true\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
+    "  <label class=\"datepicker-label datepicker-arrow text icon-before focused\" for=\"package-departing\">\n" +
+    "    <span class=\"label\">Start</span>\n" +
+    "    <input id=\"package-departing\" class=\"datepicker-trigger-input\" type=\"text\" placeholder=\"mm/dd/yyy\">\n" +
+    "    <span class=\"icon icon-calendar\"></span>\n" +
+    "  </label>\n" +
     "  <li ng-transclude></li>\n" +
-    "  <li ng-if=\"showButtonBar\" class=\"uib-button-bar\">\n" +
-    "    <span class=\"btn-group pull-left\">\n" +
-    "      <button type=\"button\" class=\"btn btn-sm btn-info uib-datepicker-current\" ng-click=\"select('today', $event)\" ng-disabled=\"isDisabled('today')\">{{ getText('current') }}</button>\n" +
-    "      <button type=\"button\" class=\"btn btn-sm btn-danger uib-clear\" ng-click=\"select(null, $event)\">{{ getText('clear') }}</button>\n" +
-    "    </span>\n" +
-    "    <button type=\"button\" class=\"btn btn-sm btn-success pull-right uib-close\" ng-click=\"close($event)\">{{ getText('close') }}</button>\n" +
-    "  </li>\n" +
     "</ul>\n" +
     "");
 }]);

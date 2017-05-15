@@ -156,6 +156,11 @@
     <td ng-if=\"showWeeks\" class=\"text-center h6\"><em>{{ weekNumbers[$index] }}</em></
 
 
+Conversion
+
+uib/template/datepicker/datepicker.html is unnecessary.  There won't be any switching between day/month/year views.  Only the month view will be available.  However I'm not going to remove it yet for fear of breaking some dependencies in the controllers
+
+
 
   
 
