@@ -6,7 +6,7 @@ angular.module('app', ['ui.bootstrap']);
 angular.module('app').controller('MainCtrl', ['$scope', function($scope){
 
     // Min and max datepicker selections
-    $scope.options = {maxDate: new Date(), minDate: new Date(2015, 0, 1)};
+    $scope.options = {initDate: new Date(2016, 0, 1)};
 
     // Datepicker format
     $scope.formats = ['dd-MMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];

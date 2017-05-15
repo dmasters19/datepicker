@@ -662,7 +662,7 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
 
 .constant('uibDatepickerConfig', {
   datepickerMode: 'day',
-  formatDay: 'dd',
+  formatDay: 'd',
   formatMonth: 'MMMM',
   formatYear: 'yyyy',
   formatDayHeader: 'EEE',
@@ -832,9 +832,9 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
     }
 
     var date = ngModelCtrl.$modelValue ? new Date(ngModelCtrl.$modelValue) : new Date();
-    this.activeDate = !isNaN(date) ?
-      dateParser.fromTimezone(date, ngModelOptions.getOption('timezone')) :
-      dateParser.fromTimezone(new Date(), ngModelOptions.getOption('timezone'));
+  //  this.activeDate = !isNaN(date) ?
+  //    dateParser.fromTimezone(date, ngModelOptions.getOption('timezone')) :
+  //    dateParser.fromTimezone(new Date(), ngModelOptions.getOption('timezone'));
 
     ngModelCtrl.$render = function() {
       self.render();
@@ -936,8 +936,10 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   };
 
   $scope.move = function(direction) {
+
     var year = self.activeDate.getFullYear() + direction * (self.step.years || 0),
         month = self.activeDate.getMonth() + direction * (self.step.months || 0);
+
     self.activeDate.setFullYear(year, month, 1);
     self.refreshView();
   };
@@ -1067,50 +1069,80 @@ angular.module('ui.bootstrap.datepicker', ['ui.bootstrap.dateparser', 'ui.bootst
   };
 
   this._refreshView = function() {
-    var year = this.activeDate.getFullYear(),
-      month = this.activeDate.getMonth(),
+
+    console.log(this);
+
+    // active date is set on scope.move
+    var yearCurrent = this.activeDate.getFullYear(),
+      monthCurrent = this.activeDate.getMonth(),
       firstDayOfMonth = new Date(this.activeDate);
 
-    firstDayOfMonth.setFullYear(year, month, 1);
+    firstDayOfMonth.setFullYear(yearCurrent, monthCurrent, 1);
+    firstDayOfNextMonth = new Date(firstDayOfMonth);
+    firstDayOfNextMonth.setMonth(firstDayOfNextMonth.getMonth() + 1)
 
-    var difference = this.startingDay - firstDayOfMonth.getDay(),
-      numDisplayedFromPreviousMonth = difference > 0 ?
-        7 - difference : - difference,
-      firstDate = new Date(firstDayOfMonth);
+    var yearNext = firstDayOfNextMonth.getFullYear(),
+      monthNext = firstDayOfNextMonth.getMonth();
+
+    // always want it to start on sunday
+    // this.startingDay is 0 because index of weekday is 0 for Sunday
+    // firstDayOfMonth will return weekday number eg Thursday is 4
+    // 0 -sunday 1 -monday 2 -tuesday 3 -wednesday 4 -thursday
+    // difference is 0 (sunday index) - firstdayofmonth index number
+    // numDisplayedFromPreviousMonth is the inverse of the difference
+    // firstDate will then be the day of the previous month that is a sunday
+
+    var differenceCurrent = this.startingDay - firstDayOfMonth.getDay(),
+      differenceNext = this.startingDay - firstDayOfNextMonth.getDay(),
+      numDisplayedFromPreviousMonth = differenceCurrent > 0 ?
+        7 - differenceCurrent : - differenceCurrent,
+      numDisplayedFromCurrentMonth = differenceNext > 0 ?
+        7 - differenceNext : -differenceNext,
+      firstDateCurrent = new Date(firstDayOfMonth),
+      firstDateNext = new Date(firstDayOfNextMonth);
 
     if (numDisplayedFromPreviousMonth > 0) {
-      firstDate.setDate(-numDisplayedFromPreviousMonth + 1);
+      firstDateCurrent.setDate(-numDisplayedFromPreviousMonth + 1);
+    }
+
+    if (numDisplayedFromCurrentMonth > 0) {
+      firstDateNext.setDate(-numDisplayedFromCurrentMonth + 1);
     }
 
     // 42 is the number of days on a six-week calendar
-    var days = this.getDates(firstDate, 42);
+    var daysCurrent = this.getDates(firstDateCurrent, 42),
+      daysNext = this.getDates(firstDateNext, 42);
     for (var i = 0; i < 42; i ++) {
-      days[i] = angular.extend(this.createDateObject(days[i], this.formatDay), {
-        secondary: days[i].getMonth() !== month,
+      daysCurrent[i] = angular.extend(this.createDateObject(daysCurrent[i], this.formatDay), {
+        secondary: daysCurrent[i].getMonth() !== monthCurrent,
+        uid: scope.uniqueId + '-' + i
+      });
+      daysNext[i] = angular.extend(this.createDateObject(daysNext[i], this.formatDay), {
+        secondary: daysNext[i].getMonth() !== monthNext,
         uid: scope.uniqueId + '-' + i
       });
     }
 
-    scope.labels = new Array(7);
+
+
+    scope.labelsCurrent = new Array(7);
+    scope.labelsNext = new Array(7);
     for (var j = 0; j < 7; j++) {
-      scope.labels[j] = {
-        abbr: dateFilter(days[j].date, this.formatDayHeader),
-        full: dateFilter(days[j].date, 'EEEE')
+      scope.labelsCurrent[j] = {
+        abbr: dateFilter(daysCurrent[j].date, this.formatDayHeader).charAt(0),
+        full: dateFilter(daysCurrent[j].date, 'EEEE')
+      };
+      scope.labelsNext[j] = {
+        abbr: dateFilter(daysNext[j].date, this.formatDayHeader).charAt(0),
+        full: dateFilter(daysNext[j].date, 'EEEE')
       };
     }
 
-    scope.title = dateFilter(this.activeDate, this.formatDayTitle);
-    scope.rows = this.split(days, 7);
+    scope.titleCurrent = dateFilter(this.activeDate, this.formatDayTitle);
+    scope.titleNext = dateFilter(firstDayOfNextMonth, this.formatDayTitle);
+    scope.rowsCurrent = this.split(daysCurrent, 7);
+    scope.rowsNext = this.split(daysNext, 7);
 
-    if (scope.showWeeks) {
-      scope.weekNumbers = [];
-      var thursdayIndex = (4 + 7 - this.startingDay) % 7,
-          numWeeks = scope.rows.length;
-      for (var curWeek = 0; curWeek < numWeeks; curWeek++) {
-        scope.weekNumbers.push(
-          getISO8601WeekNumber(scope.rows[curWeek][thursdayIndex].date));
-      }
-    }
   };
 
   this.compare = function(date1, date2) {
@@ -2460,13 +2492,13 @@ angular.module("uib/template/datepicker/day.html", []).run(["$templateCache", fu
     "        </span>\n" +
     "      </button>\n" +
     "    </div>\n" +
-    "    <button type=\"button\" class=\"datepicker-paging datepicker-prev btn-paging btn-secondary prev first-month\">\n" +
+    "    <button type=\"button\" ng-click=\"move(-1)\" class=\"datepicker-paging datepicker-prev btn-paging btn-secondary prev\">\n" +
     "      <span class=\"btn-label\">\n" +
     "        <span class=\"icon icon-pageprev\" aria-hidden=\"true\"></span>\n" +
     "        <span class=\"visuallyhidden\">previous month</span>\n" +
     "      </span>\n" +
     "    </button>\n" +
-    "    <button type=\"button\" class=\"datepicker-paging datepicker-next btn-paging btn-secondary next\">\n" +
+    "    <button type=\"button\" ng-click=\"move(1)\" class=\"datepicker-paging datepicker-next btn-paging btn-secondary next\">\n" +
     "      <span class=\"btn-label\">\n" +
     "        <span class=\"icon icon-pagenext\" aria-hidden=\"true\"></span>\n" +
     "        <span class=\"visuallyhidden\">next month</span>\n" +
@@ -2474,14 +2506,14 @@ angular.module("uib/template/datepicker/day.html", []).run(["$templateCache", fu
     "    </button>\n" +
     "    <div class=\"datepicker-cal-month\">\n" +
     "      <table class=\"datepicker-cal-weeks\">\n" +
-    "        <caption class=\"datepicker-cal-month-header\">{{title}}</caption>\n" +
+    "        <caption class=\"datepicker-cal-month-header\">{{titleCurrent}}</caption>\n" +
     "        <thead class=\"datepicker-cal-days\">\n" +
     "          <tr>\n" +
-    "            <th ng-repeat=\"label in ::labels track by $index\" scope=\"col\" role=\"columnheader\" class=\"datepicker-day-name\"><span class=\"visuallyhidden\">{{::label.full}}</span><span aria-hidden=\"true\">{{::label.abbr}}</span></th>\n" +
+    "            <th ng-repeat=\"label in ::labelsCurrent track by $index\" scope=\"col\" role=\"columnheader\" class=\"datepicker-day-name\"><span class=\"visuallyhidden\">{{::label.full}}</span><span aria-hidden=\"true\">{{::label.abbr}}</span></th>\n" +
     "          </tr>\n" +
     "        </thead\n" +
     "        <tbody class=\"datepicker-cal-dates\">\n" +
-    "          <tr ng-repeat=\"row in rows track by $index\">\n" +
+    "          <tr ng-repeat=\"row in rowsCurrent track by $index\">\n" +
     "            <td ng-repeat=\"dt in row\">\n" +
     "              <button ng-if=\"!(dt.secondary)\" type=\"button\" class=\"datepicker-cal-date\" aria-hidden=\"true\">{{::dt.label}}</button>\n" +
     "              <span ng-if=\"dt.secondary\" class=\"visuallyhidden\">{{::dt.label}}, date disabled</span>\n" +
@@ -2490,16 +2522,16 @@ angular.module("uib/template/datepicker/day.html", []).run(["$templateCache", fu
     "        </tbody>\n" +
     "      </table>\n" +
     "    </div>\n" +
-    "    <div class=\"datepicker-calo-month\">\n" +
+    "    <div class=\"datepicker-cal-month\">\n" +
     "      <table class=\"datepicker-cal-weeks\">\n" +
-    "        <caption class=\"datepicker-cal-month-header\">{{title}}</caption>\n" +
+    "        <caption class=\"datepicker-cal-month-header\">{{titleNext}}</caption>\n" +
     "        <thead class=\"datepicker-cal-days\">\n" +
     "          <tr>\n" +
-    "            <th ng-repeat=\"label in ::labels track by $index\" scope=\"col\" role=\"columnheader\" class=\"datepicker-day-name\"><span class=\"visuallyhidden\">{{::label.full}}</span><span aria-hidden=\"true\">{{::label.abbr}}</span></th>\n" +
+    "            <th ng-repeat=\"label in ::labelsNext track by $index\" scope=\"col\" role=\"columnheader\" class=\"datepicker-day-name\"><span class=\"visuallyhidden\">{{::label.full}}</span><span aria-hidden=\"true\">{{::label.abbr}}</span></th>\n" +
     "          </tr>\n" +
     "        </thead\n" +
     "        <tbody class=\"datepicker-cal-dates\">\n" +
-    "          <tr ng-repeat=\"row in rows track by $index\">\n" +
+    "          <tr ng-repeat=\"row in rowsNext track by $index\">\n" +
     "            <td ng-repeat=\"dt in row\">\n" +
     "              <button ng-if=\"!(dt.secondary)\" type=\"button\" class=\"datepicker-cal-date\" aria-hidden=\"true\">{{::dt.label}}</button>\n" +
     "              <span ng-if=\"dt.secondary\" class=\"visuallyhidden\">{{::dt.label}}, date disabled</span>\n" +
@@ -2575,14 +2607,14 @@ angular.module("uib/template/datepicker/year.html", []).run(["$templateCache", f
 
 angular.module("uib/template/datepickerPopup/popup.html", []).run(["$templateCache", function($templateCache) {
   $templateCache.put("uib/template/datepickerPopup/popup.html",
-    "<ul class=\"col text datepicker theme-standard pin-left departing datepicker-open\" ng-if=\"true\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
+    "<div class=\"col text datepicker theme-standard pin-left departing datepicker-open\" ng-if=\"true\" ng-keydown=\"keydown($event)\" ng-click=\"$event.stopPropagation()\">\n" +
     "  <label class=\"datepicker-label datepicker-arrow text icon-before focused\" for=\"package-departing\">\n" +
     "    <span class=\"label\">Start</span>\n" +
     "    <input id=\"package-departing\" class=\"datepicker-trigger-input\" type=\"text\" placeholder=\"mm/dd/yyy\">\n" +
     "    <span class=\"icon icon-calendar\"></span>\n" +
     "  </label>\n" +
-    "  <li ng-transclude></li>\n" +
-    "</ul>\n" +
+    "  <div ng-transclude></div>\n" +
+    "</div>\n" +
     "");
 }]);
 

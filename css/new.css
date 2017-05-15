@@ -10,9 +10,13 @@ div {
     display: none;
 }
 
-.datepicker-cal-month+.datepicker-cal-month {
+.datepicker-cal-month {
     display: none;
 }
+
+.datepicker-cal-month ~ .datepicker-cal-month {
+  display: block;
+} 
 
 
 button.datepicker-cal-date:focus, button.datepicker-cal-date:hover{
@@ -273,8 +277,14 @@ datepicker-paging {
 }
 
 
-.icon-pagenext:after, .icon-pageprev:after {
+.icon-pagenext:after {
     content: "\f138";
+    font-size: 26px;
+}
+
+.icon-pageprev:after{
+  content: "\f137";
+  font-size: 26px;
 }
 
 .datepicker-open>.datepicker-arrow::after {
@@ -421,6 +431,13 @@ table {
 
 @media only screen and (min-width: 30.75em)
 {
+.datepicker-cal-month {
+    display: block;
+}
+}
+
+@media only screen and (min-width: 30.75em)
+{
   .datepicker-cal-month {
       -webkit-flex: 1 1 50%;
       -ms-flex: 1 1 50%;
@@ -428,13 +445,6 @@ table {
       border-right: 1px solid #e0e0e0;
       min-height: 18.05882353em;
   }
-}
-
-@media only screen and (min-width: 30.75em)
-{
-.datepicker-cal-month+.datepicker-cal-month {
-    display: block;
-}
 }
 
 @media only screen and (min-width: 30.75em)
